@@ -1,0 +1,20 @@
+[project]
+name = "snap-solve-streamlit"
+version = "0.2.0"
+description = "A Python-only camera and pinch puzzle for a computer vision workshop."
+requires-python = ">=3.10"
+dependencies = [
+    "streamlit==1.55.0",
+    "streamlit-webrtc>=0.78.1",
+    "mediapipe>=1.1.0",
+    "numpy>=2.2.6",
+    "av>=17.1.0",
+    "opencv-contrib-python-headless==4.12.0.88",
+]
+
+[tool.uv]
+package = false
+
+# MediaPipe requests the desktop OpenCV wheel; this app only renders arrays.
+# Use its headless equivalent so two distributions never share the cv2 module.
+exclude-dependencies = ["opencv-contrib-python"]
